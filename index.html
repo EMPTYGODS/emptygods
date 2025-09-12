@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -21,13 +19,24 @@
             height: 100vh;
             text-align: center;
         }
-        h1 {
-            font-size: 8vw;
-            margin: 0.2em;
+        .top-bar {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 5vw; /* swapped: smaller than GRACE */
+            margin: 0;
+        }
+        .top-bar span {
+            margin: 0;
         }
         h2 {
-            font-size: 5vw;
+            font-size: 8vw; /* swapped: larger than EMPTY GODS */
             margin: 0.2em;
+            font-style: italic;
+            letter-spacing: 5px;
         }
         h3 {
             font-size: 3vw;
@@ -38,25 +47,36 @@
             width: 80%;
             max-width: 660px;
         }
-    </style>
+</style>
 </head>
 <body>
-<h1>EMPTY GODS</h1>
-<h2>GRACE</h2>
-<h3>21 SEPTEMBER 2025</h3>
-<div class="soundcloud-player">
-<iframe allow="autoplay" frameborder="no" height="166" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/empty-gods/bathed&amp;color=%23cccccc&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true" width="100%">
-</iframe>
-</div>
-<div class="soundcloud-player">
-<iframe allow="autoplay" frameborder="no" height="166" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/empty-gods/gutted&amp;color=%23cccccc&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true" width="100%">
-</iframe>
-</div>
-<div style="display: flex; justify-content: center; gap: 60px; margin-top: 20px;">
-<p style="font-size: 18px; color: #cccccc; margin: 0;">emptygods.grace@gmail.com</p>
-<p style="font-size: 18px; color: #cccccc; margin: 0;">@empty.gods</p>
-</div>
+    <!-- EMPTY GODS split into corners -->
+    <div class="top-bar">
+        <span>EMPTY</span>
+        <span>GODS</span>
+    </div>
 
+    <!-- GRACE centered, large, italicised with spacing -->
+    <h2>GRACE</h2>
+    <h3>21 SEPTEMBER 2025</h3>
 
+    <div class="soundcloud-player">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" 
+            allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/empty-gods/bathed&color=%23cccccc&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        </iframe>
+    </div>
+
+    <div class="soundcloud-player">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" 
+            allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/empty-gods/gutted&color=%23cccccc&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        </iframe>
+    </div>
+
+    <div style="display: flex; justify-content: center; gap: 60px; margin-top: 20px;">
+        <p style="font-size: 18px; color: #cccccc; margin: 0;">emptygods.grace@gmail.com</p>
+        <p style="font-size: 18px; color: #cccccc; margin: 0;">@empty.gods</p>
+    </div>
 </body>
 </html>
