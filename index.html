@@ -14,7 +14,7 @@
             background-size: cover;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* changed so GRACE can sit higher */
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
             text-align: center;
@@ -54,14 +54,17 @@
         .links a:hover {
             text-decoration: underline;
         }
-        .contact {
+        .contact-left {
             position: absolute;
             bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
+            left: 20px;
+            font-size: 18px;
+            color: white;
+        }
+        .contact-right {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
             font-size: 18px;
             color: white;
         }
@@ -87,10 +90,8 @@
         <a href="https://www.discogs.com/release/35258395-Empty-Gods-GRACE" target="_blank">DISCOGS</a>
     </div>
 
-    <!-- Contact info at bottom -->
-    <div class="contact">
-        <p style="margin: 0;">emptygods.grace@gmail.com</p>
-        <p style="margin: 0;">@empty.gods</p>
-    </div>
+    <!-- Contact info in corners -->
+    <div class="contact-left">emptygods.grace@gmail.com</div>
+    <div class="contact-right">@empty.gods</div>
 </body>
 </html>
