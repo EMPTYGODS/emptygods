@@ -15,7 +15,7 @@
         color: white;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* keep GRACE toward top */
+        justify-content: flex-start; /* keeps GRACE toward top */
         align-items: center;
         text-align: center;
         overflow: hidden;
@@ -28,18 +28,18 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        object-fit: cover;       /* fill viewport, crop as needed */
-        z-index: -2;             /* behind everything */
+        object-fit: cover;
+        z-index: -2;
     }
 
-    /* subtle overlay to improve text contrast */
+    /* dark overlay to increase text contrast */
     .overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0,0,0,0.35); /* tweak darkness as needed */
+        background: rgba(0,0,0,0.35);
         z-index: -1;
         pointer-events: none;
     }
@@ -57,17 +57,17 @@
         color: white;
     }
 
-    /* GRACE centered, large, italicised with spacing; moved closer to top with margin-top */
+    /* GRACE large and toward top */
     h2 {
-        font-size: 16vw;       /* doubled size as requested */
+        font-size: 16vw;
         margin: 0.2em;
-        margin-top: 12vh;      /* move 50% closer to top (adjust as needed) */
+        margin-top: 12vh;
         font-style: italic;
         letter-spacing: 5px;
         color: white;
     }
 
-    /* list of links under GRACE */
+    /* link list */
     .links {
         margin-top: 1.2em;
     }
@@ -82,7 +82,7 @@
         text-decoration: underline;
     }
 
-    /* corner contact items */
+    /* contact bottom corners */
     .contact-left {
         position: absolute;
         bottom: 12px;
@@ -98,47 +98,43 @@
         color: white;
     }
 
-    /* responsive: hide video on small devices to save bandwidth */
+    /* responsive behaviour */
     @media (max-width: 600px) {
         #bg-video { display: none; }
         .overlay { display: none; }
-        h2 { font-size: 24vw; margin-top: 8vh; } /* scale down on small screens */
+        h2 { font-size: 24vw; margin-top: 8vh; }
         .links a { font-size: 4.5vw; }
     }
 </style>
 </head>
 <body>
 
-    <!-- VIDEO BACKGROUND: update src to the exact name you uploaded -->
+    <!-- Video Background -->
     <video id="bg-video" autoplay muted loop playsinline poster="background.jpg">
         <source src="background.mp4" type="video/mp4">
-        <!-- optional: a webm source if you create one -->
-        <!-- <source src="background.webm" type="video/webm"> -->
         Your browser does not support the background video.
     </video>
 
-    <!-- overlay so text remains readable -->
     <div class="overlay" aria-hidden="true"></div>
 
-    <!-- EMPTY GODS split into corners -->
+    <!-- EMPTY / GODS corners -->
     <div class="top-bar">
         <span>EMPTY</span>
         <span>GODS</span>
     </div>
 
-    <!-- GRACE centered -->
+    <!-- GRACE -->
     <h2>GRACE</h2>
 
-    <!-- Links list (vertical) -->
+    <!-- Links list (Spotify removed) -->
     <div class="links">
         <a href="https://emptygods.bandcamp.com/album/grace" target="_blank" rel="noopener">BANDCAMP</a>
         <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank" rel="noopener">APPLE</a>
         <a href="https://music.youtube.com/watch?v=lmUPPZnvLA8&list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank" rel="noopener">YOUTUBE</a>
         <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank" rel="noopener">AMAZON</a>
-        <a href="https://open.spotify.com/artist/7tTWEXx7iay38hS3OJlO7d" target="_blank" rel="noopener">SPOTIFY</a>
     </div>
 
-    <!-- corner contact info -->
+    <!-- contact info -->
     <div class="contact-left">emptygods.grace@gmail.com</div>
     <div class="contact-right">@empty.gods</div>
 
