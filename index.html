@@ -2,95 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Empty Gods</title>
 <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .top-bar {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 10vw;
-            margin: 0;
-            color: white;
-        }
-        .top-bar span {
-            margin: 0;
-        }
-        h2 {
-            font-size: 16vw; /* doubled size */
-            margin: 0.2em;
-            margin-top: 15vh; /* move closer to top */
-            font-style: italic;
-            letter-spacing: 5px;
-            color: white;
-        }
-        .links {
-            margin-top: 1em;
-        }
-        .links a {
-            display: block;
-            font-size: 3vw;
-            margin: 0.5em 0;
-            color: white;
-            text-decoration: none;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
-        .contact-left {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            font-size: 18px;
-            color: white;
-        }
-        .contact-right {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 18px;
-            color: white;
-        }
+    /* page layout */
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* keep GRACE toward top */
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* full-screen video background */
+    #bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;       /* fill viewport, crop as needed */
+        z-index: -2;             /* behind everything */
+    }
+
+    /* subtle overlay to improve text contrast */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.35); /* tweak darkness as needed */
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* top corner words */
+    .top-bar {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 5vw;
+        margin: 0;
+        color: white;
+    }
+
+    /* GRACE centered, large, italicised with spacing; moved closer to top with margin-top */
+    h2 {
+        font-size: 16vw;       /* doubled size as requested */
+        margin: 0.2em;
+        margin-top: 12vh;      /* move 50% closer to top (adjust as needed) */
+        font-style: italic;
+        letter-spacing: 5px;
+        color: white;
+    }
+
+    /* list of links under GRACE */
+    .links {
+        margin-top: 1.2em;
+    }
+    .links a {
+        display: block;
+        font-size: 3vw;
+        margin: 0.5em 0;
+        color: white;
+        text-decoration: none;
+    }
+    .links a:hover {
+        text-decoration: underline;
+    }
+
+    /* corner contact items */
+    .contact-left {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        font-size: 16px;
+        color: white;
+    }
+    .contact-right {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        font-size: 16px;
+        color: white;
+    }
+
+    /* responsive: hide video on small devices to save bandwidth */
+    @media (max-width: 600px) {
+        #bg-video { display: none; }
+        .overlay { display: none; }
+        h2 { font-size: 24vw; margin-top: 8vh; } /* scale down on small screens */
+        .links a { font-size: 4.5vw; }
+    }
 </style>
 </head>
 <body>
+
+    <!-- VIDEO BACKGROUND: update src to the exact name you uploaded -->
+    <video id="bg-video" autoplay muted loop playsinline poster="background.jpg">
+        <source src="background.mp4" type="video/mp4">
+        <!-- optional: a webm source if you create one -->
+        <!-- <source src="background.webm" type="video/webm"> -->
+        Your browser does not support the background video.
+    </video>
+
+    <!-- overlay so text remains readable -->
+    <div class="overlay" aria-hidden="true"></div>
+
     <!-- EMPTY GODS split into corners -->
     <div class="top-bar">
         <span>EMPTY</span>
         <span>GODS</span>
     </div>
 
-    <!-- GRACE centered, larger, italicised with spacing -->
+    <!-- GRACE centered -->
     <h2>GRACE</h2>
 
-    <!-- Links list -->
+    <!-- Links list (vertical) -->
     <div class="links">
-        <a href="https://emptygods.bandcamp.com/album/grace" target="_blank">BANDCAMP</a>
-        <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank">APPLE</a>
-        <a href="https://music.youtube.com/watch?v=lmUPPZnvLA8&list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank">YOUTUBE</a>
-        <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank">AMAZON</a>
-        
+        <a href="https://emptygods.bandcamp.com/album/grace" target="_blank" rel="noopener">BANDCAMP</a>
+        <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank" rel="noopener">APPLE</a>
+        <a href="https://music.youtube.com/watch?v=lmUPPZnvLA8&list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank" rel="noopener">YOUTUBE</a>
+        <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank" rel="noopener">AMAZON</a>
+        <a href="https://open.spotify.com/artist/7tTWEXx7iay38hS3OJlO7d" target="_blank" rel="noopener">SPOTIFY</a>
     </div>
 
-    <!-- Contact info in corners -->
+    <!-- corner contact info -->
     <div class="contact-left">emptygods.grace@gmail.com</div>
     <div class="contact-right">@empty.gods</div>
+
 </body>
 </html>
