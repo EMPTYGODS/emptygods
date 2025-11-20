@@ -98,10 +98,8 @@
         color: white;
     }
 
-    /* responsive behaviour */
-    @media (max-width: 600px) {
-        #bg-video { display: none; }
-        .overlay { display: none; }
+    /* responsive adjustments for mobile */
+    @media (max-width: 768px) {
         h2 { font-size: 24vw; margin-top: 8vh; }
         .links a { font-size: 4.5vw; }
     }
@@ -110,7 +108,10 @@
 <body>
 
     <!-- Video Background -->
-    <video id="bg-video" autoplay muted loop playsinline poster="background.jpg">
+    <video id="bg-video" autoplay muted loop playsinline>
+        <!-- Mobile-optimized video (720p) -->
+        <source src="background-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+        <!-- Full-resolution video (1080p) for desktop/laptop -->
         <source src="background.mp4" type="video/mp4">
         Your browser does not support the background video.
     </video>
