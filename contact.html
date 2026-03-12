@@ -50,12 +50,14 @@ html, body {
 }
 .links a:hover { opacity: 0.6; }
 
+/* Mobile / phone adjustments */
 @media (max-width: 600px){
   .title { top:30px; right:25px; }
   .title h1 { font-size:1.3rem; }
   .title h2 { font-size:2.2rem; }
   .links { left:25px; }
-  .links a { font-size:1.5rem; margin:12px 0; }
+  /* Reduce font size of contact links by 25% for phones */
+  .links a { font-size:1.125rem; margin:12px 0; }
 }
 </style>
 </head>
