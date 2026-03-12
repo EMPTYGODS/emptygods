@@ -5,50 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CONTACT — EMPTY GODS</title>
 <style>
-html, body{
-  margin:0;
-  height:100%;
+html, body {
+  margin: 0;
+  height: 100%;
   font-family: Garamond, "Adobe Garamond Pro", "Times New Roman", serif;
-  color:white;
-  overflow:hidden;
-  background-image:url("main.jpg");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  color: white;
+  overflow: hidden;
+  background-image: url('main.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
 }
 
-.title { position:fixed; top:40px; right:40px; text-align:right; }
-.title a { color:white; text-decoration:none; }
+/* Title in upper-right corner */
+.title {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  text-align: right;
+}
+.title a { color: white; text-decoration: none; }
 .title h1 { margin:0; font-size:1.8rem; letter-spacing:0.28em; font-weight:400; opacity:0.9; }
 .title h2 { margin-top:6px; font-size:3.4rem; letter-spacing:0.18em; font-weight:500; }
 
+/* Contact links on left */
 .links {
-  position:fixed;
-  top:50%;
-  left:40px;
-  transform:translateY(-50%);
+  position: fixed;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
 }
 .links a {
-  display:block;
-  color:white;
-  text-decoration:none;
-  font-size:1.9rem;
-  margin:22px 0;
-  letter-spacing:0.2em;
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 1.9rem;
+  margin: 22px 0;
+  letter-spacing: 0.2em;
   word-wrap: break-word;
   transition: opacity 0.3s ease-in-out;
 }
-.links a:hover { opacity:0.6; }
+.links a:hover { opacity: 0.6; }
 
-@media (max-width:600px){
-  .title{ top:30px; right:25px; }
-  .title h1{ font-size:1.3rem; }
-  .title h2{ font-size:2.2rem; }
-  .links{ left:25px; }
-  .links a{ font-size:1.5rem; margin:12px 0; }
+@media (max-width: 600px){
+  .title { top:30px; right:25px; }
+  .title h1 { font-size:1.3rem; }
+  .title h2 { font-size:2.2rem; }
+  .links { left:25px; }
+  .links a { font-size:1.5rem; margin:12px 0; }
 }
 </style>
 </head>
+
 <body>
 
 <div class="title">
@@ -60,21 +71,31 @@ html, body{
 
 <div class="links">
   <a href="mailto:emptygods.grace@gmail.com">emptygods.grace@gmail.com</a>
-  <a href="https://instagram.com/empty.gods">@empty.gods</a>
+  <a href="https://www.instagram.com/empty.gods" target="_blank">@empty.gods</a>
 </div>
 
 <script>
-// Desktop parallax
+// Desktop parallax effect
 document.addEventListener("mousemove", function(e){
   const x = (e.clientX / window.innerWidth - 0.5) * 12;
   const y = (e.clientY / window.innerHeight - 0.5) * 12;
   document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
 });
 
-// Scroll parallax
 window.addEventListener("scroll", function(){
   const offset = window.pageYOffset * 0.12;
   document.body.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+});
+
+// Mobile tap effect for contact links
+const contactLinks = document.querySelectorAll('.links a');
+contactLinks.forEach(link => {
+  link.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // prevent immediate navigation
+    document.body.style.backgroundImage = "url('main_alt.jpg')"; // hover-style image
+    const href = link.getAttribute('href');
+    setTimeout(() => { window.location.href = href; }, 200); // short delay
+  });
 });
 </script>
 
