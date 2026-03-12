@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LISTEN — EMPTY GODS</title>
+
+<style>
+html, body{
+margin:0;
+height:100%;
+font-family: Garamond, "Adobe Garamond Pro", "Times New Roman", serif;
+color:white;
+overflow:hidden;
+}
+
+body{
+background-image:url("main.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+/* clickable title */
+.title{
+position:fixed;
+top:40px;
+right:40px;
+text-align:right;
+}
+
+.title a{
+color:white;
+text-decoration:none;
+}
+
+.title h1{
+margin:0;
+font-size:1.8rem;
+letter-spacing:0.28em;
+font-weight:400;
+opacity:0.9;
+}
+
+.title h2{
+margin-top:6px;
+font-size:3.4rem;
+letter-spacing:0.18em;
+font-weight:500;
+}
+
+/* links */
+.links{
+position:fixed;
+top:50%;
+left:40px;
+transform:translateY(-50%);
+}
+
+.links a{
+display:block;
+color:white;
+text-decoration:none;
+font-size:1.9rem;
+margin:22px 0;
+letter-spacing:0.2em;
+}
+
+.links a:hover{
+opacity:0.6;
+}
+
+@media (max-width:600px){
+.title{ top:30px; right:25px; }
+.title h1{ font-size:1.3rem; }
+.title h2{ font-size:2.2rem; }
+.links{ left:25px; }
+.links a{ font-size:1.5rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">
+<a href="index.html">
+<h1>EMPTY GODS</h1>
+<h2>GRACE</h2>
+</a>
+</div>
+
+<div class="links">
+<!-- PASTE YOUR DSP LINKS BELOW -->
+<a href="#">Spotify</a>
+<a href="#">Apple Music</a>
+<a href="#">Bandcamp</a>
+<a href="#">YouTube</a>
+</div>
+
+<script>
+document.addEventListener("mousemove", function(e){
+const x = (e.clientX / window.innerWidth - 0.5) * 12
+const y = (e.clientY / window.innerHeight - 0.5) * 12
+document.body.style.backgroundPosition =
+`calc(50% + ${x}px) calc(50% + ${y}px)`
+})
+
+window.addEventListener("scroll", function(){
+const offset = window.pageYOffset * 0.12
+document.body.style.backgroundPosition =
+`center calc(50% + ${offset}px)`
+})
+</script>
+
+</body>
+</html>
