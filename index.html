@@ -18,6 +18,7 @@ html, body {
   transition: background-image 0.5s ease-in-out;
 }
 
+/* Title in upper-right corner */
 .title {
   position: fixed;
   top: 40px;
@@ -28,11 +29,14 @@ html, body {
 .title h1 { margin:0; font-size:1.8rem; letter-spacing:0.28em; font-weight:400; opacity:0.9; }
 .title h2 { margin-top:6px; font-size:3.4rem; letter-spacing:0.18em; font-weight:500; }
 
+/* Left-side links */
 .links {
   position: fixed;
   top: 50%;
   left: 40px;
   transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
 }
 .links a {
   display: block;
@@ -41,12 +45,12 @@ html, body {
   font-size: 1.9rem;
   margin: 22px 0;
   letter-spacing: 0.2em;
-  transition: opacity 0.3s ease-in-out;
   word-wrap: break-word;
+  transition: opacity 0.3s ease-in-out;
 }
-.links a:hover { opacity:0.6; }
+.links a:hover { opacity: 0.6; }
 
-@media (max-width: 600px) {
+@media (max-width: 600px){
   .title { top:30px; right:25px; }
   .title h1 { font-size:1.3rem; }
   .title h2 { font-size:2.2rem; }
@@ -55,6 +59,7 @@ html, body {
 }
 </style>
 </head>
+
 <body>
 
 <div class="title">
@@ -70,7 +75,7 @@ html, body {
 </div>
 
 <script>
-// Desktop parallax
+// Desktop parallax effect
 document.addEventListener("mousemove", function(e){
   const x = (e.clientX / window.innerWidth - 0.5) * 12;
   const y = (e.clientY / window.innerHeight - 0.5) * 12;
@@ -94,7 +99,7 @@ hoverLinks.forEach(link => {
   });
 });
 
-// Tap effect for mobile/tablet
+// Mobile tap effect for phones/tablets
 hoverLinks.forEach(link => {
   link.addEventListener('touchstart', (e) => {
     e.preventDefault(); // prevent immediate navigation
