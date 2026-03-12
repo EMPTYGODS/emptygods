@@ -42,15 +42,16 @@ html, body {
   margin: 22px 0;
   letter-spacing: 0.2em;
   transition: opacity 0.3s ease-in-out;
+  word-wrap: break-word;
 }
 .links a:hover { opacity:0.6; }
 
 @media (max-width: 600px) {
-  .title{ top:30px; right:25px; }
-  .title h1{ font-size:1.3rem; }
-  .title h2{ font-size:2.2rem; }
-  .links{ left:25px; }
-  .links a{ font-size:1.5rem; }
+  .title { top:30px; right:25px; }
+  .title h1 { font-size:1.3rem; }
+  .title h2 { font-size:2.2rem; }
+  .links { left:25px; }
+  .links a { font-size:1.5rem; margin:12px 0; }
 }
 </style>
 </head>
@@ -82,17 +83,25 @@ window.addEventListener("scroll", function(){
   document.body.style.backgroundPosition = `center calc(50% + ${offset}px)`;
 });
 
-// Hover background change for desktops
+// Hover background change for desktop
 const hoverLinks = document.querySelectorAll('.hover-link');
 hoverLinks.forEach(link => {
-  link.addEventListener('mouseover', () => { document.body.style.backgroundImage = `url('${link.dataset.hover}')`; });
-  link.addEventListener('mouseout', () => { document.body.style.backgroundImage = "url('main.jpg')"; });
+  link.addEventListener('mouseover', () => {
+    document.body.style.backgroundImage = `url('${link.dataset.hover}')`;
+  });
+  link.addEventListener('mouseout', () => {
+    document.body.style.backgroundImage = "url('main.jpg')";
+  });
 });
 
 // Tap effect for mobile/tablet
 hoverLinks.forEach(link => {
-  link.addEventListener('touchstart', () => { document.body.style.backgroundImage = `url('${link.dataset.hover}')`; });
-  link.addEventListener('touchend', () => { document.body.style.backgroundImage = "url('main.jpg')"; });
+  link.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // prevent immediate navigation
+    document.body.style.backgroundImage = `url('${link.dataset.hover}')`;
+    const href = link.getAttribute('href');
+    setTimeout(() => { window.location.href = href; }, 200); // short delay
+  });
 });
 </script>
 
