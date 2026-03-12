@@ -1,143 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Empty Gods</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMPTY GODS</title>
+
 <style>
-    /* page layout */
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* keeps GRACE toward top */
-        align-items: center;
-        text-align: center;
-        overflow: hidden;
-    }
 
-    /* full-screen video background */
-    #bg-video {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        z-index: -2;
-    }
+html, body{
+margin:0;
+height:100%;
+font-family: Garamond, "Adobe Garamond Pro", "Times New Roman", serif;
+color:white;
+overflow:hidden;
+}
 
-    /* dark overlay to increase text contrast */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0,0,0,0.35);
-        z-index: -1;
-        pointer-events: none;
-    }
+/* background image */
 
-    /* top corner words */
-    .top-bar {
-        position: absolute;
-        top: 10px;
-        left: 20px;
-        right: 20px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 5vw;
-        margin: 0;
-        color: white;
-    }
+body{
+background-image:url("main.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+transition:background-image 0.25s ease;
+}
 
-    /* GRACE large and toward top */
-    h2 {
-        font-size: 16vw;
-        margin: 0.2em;
-        margin-top: 12vh;
-        font-style: italic;
-        letter-spacing: 5px;
-        color: white;
-    }
+/* tonal hover version */
 
-    /* link list */
-    .links {
-        margin-top: 1.2em;
-    }
-    .links a {
-        display: block;
-        font-size: 3vw;
-        margin: 0.5em 0;
-        color: white;
-        text-decoration: none;
-    }
-    .links a:hover {
-        text-decoration: underline;
-    }
+body.hover-bg{
+background-image:url("main_alt.jpg");
+}
 
-    /* contact bottom corners */
-    .contact-left {
-        position: absolute;
-        bottom: 12px;
-        left: 12px;
-        font-size: 16px;
-        color: white;
-    }
-    .contact-right {
-        position: absolute;
-        bottom: 12px;
-        right: 12px;
-        font-size: 16px;
-        color: white;
-    }
+/* title block */
 
-    /* responsive adjustments for mobile */
-    @media (max-width: 768px) {
-        h2 { font-size: 24vw; margin-top: 8vh; }
-        .links a { font-size: 4.5vw; }
-    }
+.title{
+position:fixed;
+top:40px;
+right:40px;
+text-align:right;
+}
+
+/* EMPTY GODS */
+
+.title h1{
+margin:0;
+font-size:1.8rem;
+letter-spacing:0.28em;
+font-weight:400;
+opacity:0.9;
+}
+
+/* GRACE */
+
+.title h2{
+margin-top:6px;
+font-size:3.4rem;
+letter-spacing:0.18em;
+font-weight:500;
+}
+
+/* navigation */
+
+.nav{
+position:fixed;
+top:50%;
+left:40px;
+transform:translateY(-50%);
+}
+
+.nav a{
+display:block;
+color:white;
+text-decoration:none;
+font-size:1.9rem;
+margin:24px 0;
+letter-spacing:0.2em;
+font-weight:400;
+transition:opacity 0.25s ease;
+}
+
+.nav a:hover{
+opacity:0.6;
+}
+
+/* mobile layout */
+
+@media (max-width:600px){
+
+.title{
+top:30px;
+right:25px;
+}
+
+.title h1{
+font-size:1.3rem;
+}
+
+.title h2{
+font-size:2.2rem;
+}
+
+.nav{
+left:25px;
+}
+
+.nav a{
+font-size:1.5rem;
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
 
-    <!-- Video Background -->
-    <video id="bg-video" autoplay muted loop playsinline>
-        <!-- Mobile-optimized video (720p) -->
-        <source src="background-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
-        <!-- Full-resolution video (1080p) for desktop/laptop -->
-        <source src="background.mp4" type="video/mp4">
-        Your browser does not support the background video.
-    </video>
+<div class="title">
 
-    <div class="overlay" aria-hidden="true"></div>
+<h1>EMPTY GODS</h1>
+<h2>GRACE</h2>
 
-    <!-- EMPTY / GODS corners -->
-    <div class="top-bar">
-        <span>EMPTY</span>
-        <span>GODS</span>
-    </div>
+</div>
 
-    <!-- GRACE -->
-    <h2>GRACE</h2>
+<div class="nav">
 
-    <!-- Links list (Spotify removed) -->
-    <div class="links">
-        <a href="https://emptygods.bandcamp.com/album/grace" target="_blank" rel="noopener">BANDCAMP</a>
-        <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank" rel="noopener">APPLE</a>
-        <a href="https://music.youtube.com/watch?v=lmUPPZnvLA8&list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank" rel="noopener">YOUTUBE</a>
-        <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank" rel="noopener">AMAZON</a>
-    </div>
+<a href="listen.html"
+onmouseenter="hoverOn()"
+onmouseleave="hoverOff()"
+ontouchstart="hoverOn()">LISTEN</a>
 
-    <!-- contact info -->
-    <div class="contact-left">emptygods.grace@gmail.com</div>
-    <div class="contact-right">@empty.gods</div>
+<a href="contact.html"
+onmouseenter="hoverOn()"
+onmouseleave="hoverOff()"
+ontouchstart="hoverOn()">CONTACT</a>
+
+</div>
+
+<script>
+
+/* hover + touch tonal shift */
+
+function hoverOn(){
+document.body.classList.add("hover-bg")
+}
+
+function hoverOff(){
+document.body.classList.remove("hover-bg")
+}
+
+
+/* desktop parallax */
+
+document.addEventListener("mousemove", function(e){
+
+const x = (e.clientX / window.innerWidth - 0.5) * 12
+const y = (e.clientY / window.innerHeight - 0.5) * 12
+
+document.body.style.backgroundPosition =
+`calc(50% + ${x}px) calc(50% + ${y}px)`
+
+})
+
+
+/* subtle mobile movement */
+
+window.addEventListener("scroll", function(){
+
+const offset = window.pageYOffset * 0.12
+
+document.body.style.backgroundPosition =
+`center calc(50% + ${offset}px)`
+
+})
+
+</script>
 
 </body>
+
 </html>
