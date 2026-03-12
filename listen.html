@@ -4,78 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LISTEN — EMPTY GODS</title>
-
 <style>
-html, body{
-margin:0;
-height:100%;
-font-family: Garamond, "Adobe Garamond Pro", "Times New Roman", serif;
-color:white;
-overflow:hidden;
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Garamond, "Adobe Garamond Pro", "Times New Roman", serif;
+  color: white;
+  overflow: hidden;
+  background-image: url('main.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
 }
 
-body{
-background-image:url("main.jpg");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
+/* Title in upper right corner */
+.title {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  text-align: right;
 }
+.title a { color: white; text-decoration: none; }
+.title h1 { margin:0; font-size:1.8rem; letter-spacing:0.28em; font-weight:400; opacity:0.9; }
+.title h2 { margin-top:6px; font-size:3.4rem; letter-spacing:0.18em; font-weight:500; }
 
-/* clickable title */
-.title{
-position:fixed;
-top:40px;
-right:40px;
-text-align:right;
+/* DSP Links on left */
+.links {
+  position: fixed;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
 }
-
-.title a{
-color:white;
-text-decoration:none;
+.links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 1.9rem;
+  margin: 22px 0;
+  letter-spacing: 0.2em;
+  word-wrap: break-word;
+  transition: opacity 0.3s ease-in-out;
 }
+.links a:hover { opacity: 0.6; }
 
-.title h1{
-margin:0;
-font-size:1.8rem;
-letter-spacing:0.28em;
-font-weight:400;
-opacity:0.9;
-}
-
-.title h2{
-margin-top:6px;
-font-size:3.4rem;
-letter-spacing:0.18em;
-font-weight:500;
-}
-
-/* links */
-.links{
-position:fixed;
-top:50%;
-left:40px;
-transform:translateY(-50%);
-}
-
-.links a{
-display:block;
-color:white;
-text-decoration:none;
-font-size:1.9rem;
-margin:22px 0;
-letter-spacing:0.2em;
-}
-
-.links a:hover{
-opacity:0.6;
-}
-
-@media (max-width:600px){
-.title{ top:30px; right:25px; }
-.title h1{ font-size:1.3rem; }
-.title h2{ font-size:2.2rem; }
-.links{ left:25px; }
-.links a{ font-size:1.5rem; }
+@media (max-width: 600px){
+  .title { top:30px; right:25px; }
+  .title h1 { font-size:1.3rem; }
+  .title h2 { font-size:2.2rem; }
+  .links { left:25px; }
+  .links a { font-size:1.5rem; margin:12px 0; }
 }
 </style>
 </head>
@@ -83,32 +61,42 @@ opacity:0.6;
 <body>
 
 <div class="title">
-<a href="index.html">
-<h1>EMPTY GODS</h1>
-<h2>GRACE</h2>
-</a>
+  <a href="index.html">
+    <h1>EMPTY GODS</h1>
+    <h2>GRACE</h2>
+  </a>
 </div>
 
 <div class="links">
-<a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank">Apple Music</a>
-<a href="https://emptygods.bandcamp.com/album/grace" target="_blank">Bandcamp</a>
-<a href="https://music.youtube.com/playlist?list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank">YouTube</a>
-<a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank">Amazon Music</a>
+  <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank">Apple Music</a>
+  <a href="https://emptygods.bandcamp.com/album/grace" target="_blank">Bandcamp</a>
+  <a href="https://music.youtube.com/playlist?list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank">YouTube</a>
+  <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank">Amazon Music</a>
 </div>
 
 <script>
+// Desktop parallax effect
 document.addEventListener("mousemove", function(e){
-const x = (e.clientX / window.innerWidth - 0.5) * 12
-const y = (e.clientY / window.innerHeight - 0.5) * 12
-document.body.style.backgroundPosition =
-`calc(50% + ${x}px) calc(50% + ${y}px)`
-})
+  const x = (e.clientX / window.innerWidth - 0.5) * 12;
+  const y = (e.clientY / window.innerHeight - 0.5) * 12;
+  document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+});
 
 window.addEventListener("scroll", function(){
-const offset = window.pageYOffset * 0.12
-document.body.style.backgroundPosition =
-`center calc(50% + ${offset}px)`
-})
+  const offset = window.pageYOffset * 0.12;
+  document.body.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+});
+
+// Mobile tap effect for all DSP links
+const listenLinks = document.querySelectorAll('.links a');
+listenLinks.forEach(link => {
+  link.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // prevent immediate navigation
+    document.body.style.backgroundImage = "url('main_alt.jpg')"; // hover-style image
+    const href = link.getAttribute('href');
+    setTimeout(() => { window.location.href = href; }, 200); // short delay
+  });
+});
 </script>
 
 </body>
