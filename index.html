@@ -19,14 +19,15 @@ html, body {
   transition: background-image 0.5s ease-in-out;
 }
 
-/* Title */
-.title {
+/* NEW: unified right-aligned container */
+.wrapper {
   position: fixed;
   top: 40px;
   right: 40px;
   text-align: right;
 }
 
+/* Title */
 .title h1 {
   margin: 0;
   font-size: 1.8rem;
@@ -36,18 +37,15 @@ html, body {
 }
 
 .title h2 {
-  margin-top: 6px;
+  margin-top: 6px; /* small gap */
   font-size: 3.4rem;
   letter-spacing: 0.18em;
   font-weight: 500;
 }
 
-/* Music Links (right aligned under title) */
+/* Music Links */
 .music-links {
-  position: fixed;
-  right: 40px;
-  top: calc(40px + 5.5rem); /* spacing under GRACE */
-  text-align: right;
+  margin-top: 3rem; /* LARGE gap (~3x bigger than 6px) */
   display: flex;
   flex-direction: column;
 }
@@ -79,7 +77,7 @@ html, body {
 /* Mobile adjustments */
 @media (max-width: 600px) {
 
-  .title {
+  .wrapper {
     top: 30px;
     right: 25px;
   }
@@ -88,8 +86,7 @@ html, body {
   .title h2 { font-size: 2.2rem; }
 
   .music-links {
-    right: 25px;
-    top: calc(30px + 4.2rem);
+    margin-top: 2rem; /* keep proportional spacing on mobile */
   }
 
   .music-links a {
@@ -107,17 +104,19 @@ html, body {
 
 <body>
 
-<div class="title">
-  <h1>EMPTY GODS</h1>
-  <h2>GRACE</h2>
-</div>
+<div class="wrapper">
+  <div class="title">
+    <h1>EMPTY GODS</h1>
+    <h2>GRACE</h2>
+  </div>
 
-<div class="music-links">
-  <a href="https://music.youtube.com/playlist?list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank" class="hover-link">YOUTUBE</a>
-  <a href="https://emptygods.bandcamp.com/album/grace" target="_blank" class="hover-link">BANDCAMP</a>
-  <a href="https://open.spotify.com/album/4SxgbwAzeQMmNSxemES5Fj" target="_blank" class="hover-link">SPOTIFY</a>
-  <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank" class="hover-link">APPLE</a>
-  <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank" class="hover-link">AMAZON</a>
+  <div class="music-links">
+    <a href="https://music.youtube.com/playlist?list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank" class="hover-link">YOUTUBE</a>
+    <a href="https://emptygods.bandcamp.com/album/grace" target="_blank" class="hover-link">BANDCAMP</a>
+    <a href="https://open.spotify.com/album/4SxgbwAzeQMmNSxemES5Fj" target="_blank" class="hover-link">SPOTIFY</a>
+    <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank" class="hover-link">APPLE</a>
+    <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank" class="hover-link">AMAZON</a>
+  </div>
 </div>
 
 <div class="footer">
