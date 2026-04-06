@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EMPTY GODS — GRACE</title>
+
 <style>
 html, body {
   margin: 0;
@@ -18,44 +19,88 @@ html, body {
   transition: background-image 0.5s ease-in-out;
 }
 
-/* Title in upper-right corner */
+/* Title */
 .title {
   position: fixed;
   top: 40px;
   right: 40px;
   text-align: right;
 }
-.title a { color: white; text-decoration: none; }
-.title h1 { margin:0; font-size:1.8rem; letter-spacing:0.28em; font-weight:400; opacity:0.9; }
-.title h2 { margin-top:6px; font-size:3.4rem; letter-spacing:0.18em; font-weight:500; }
 
-/* Left-side links */
-.links {
+.title h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.28em;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.title h2 {
+  margin-top: 6px;
+  font-size: 3.4rem;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+}
+
+/* Music Links (right aligned under title) */
+.music-links {
   position: fixed;
-  top: 50%;
-  left: 40px;
-  transform: translateY(-50%);
+  right: 40px;
+  top: calc(40px + 5.5rem); /* spacing under GRACE */
+  text-align: right;
   display: flex;
   flex-direction: column;
 }
-.links a {
-  display: block;
+
+.music-links a {
   color: white;
   text-decoration: none;
-  font-size: 1.9rem;
-  margin: 22px 0;
-  letter-spacing: 0.2em;
-  word-wrap: break-word;
-  transition: opacity 0.3s ease-in-out;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.18em;
+  margin: 6px 0;
+  transition: opacity 0.3s ease;
 }
-.links a:hover { opacity: 0.6; }
 
-@media (max-width: 600px){
-  .title { top:30px; right:25px; }
-  .title h1 { font-size:1.3rem; }
-  .title h2 { font-size:2.2rem; }
-  .links { left:25px; }
-  .links a { font-size:1.5rem; margin:12px 0; }
+.music-links a:hover {
+  opacity: 0.6;
+}
+
+/* Instagram bottom right */
+.footer {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  opacity: 0.85;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+
+  .title {
+    top: 30px;
+    right: 25px;
+  }
+
+  .title h1 { font-size: 1.3rem; }
+  .title h2 { font-size: 2.2rem; }
+
+  .music-links {
+    right: 25px;
+    top: calc(30px + 4.2rem);
+  }
+
+  .music-links a {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+
+  .footer {
+    right: 25px;
+    font-size: 0.85rem;
+  }
 }
 </style>
 </head>
@@ -63,49 +108,40 @@ html, body {
 <body>
 
 <div class="title">
-  <a href="index.html">
-    <h1>EMPTY GODS</h1>
-    <h2>GRACE</h2>
-  </a>
+  <h1>EMPTY GODS</h1>
+  <h2>GRACE</h2>
 </div>
 
-<div class="links">
-  <a href="listen.html" class="hover-link" data-hover="main_alt.jpg">LISTEN</a>
-  <a href="contact.html" class="hover-link" data-hover="main_alt.jpg">CONTACT</a>
+<div class="music-links">
+  <a href="https://music.youtube.com/playlist?list=OLAK5uy_mhk0zVIM0_G0yO1K2NhZbTITFXEOZMRc4" target="_blank" class="hover-link">YOUTUBE</a>
+  <a href="https://emptygods.bandcamp.com/album/grace" target="_blank" class="hover-link">BANDCAMP</a>
+  <a href="https://open.spotify.com/album/4SxgbwAzeQMmNSxemES5Fj" target="_blank" class="hover-link">SPOTIFY</a>
+  <a href="https://music.apple.com/us/artist/empty-gods/1840681525" target="_blank" class="hover-link">APPLE</a>
+  <a href="https://music.amazon.com/artists/B0FRSCNSLF/empty-gods" target="_blank" class="hover-link">AMAZON</a>
+</div>
+
+<div class="footer">
+  @empty.gods
 </div>
 
 <script>
-// Desktop parallax effect
-document.addEventListener("mousemove", function(e){
-  const x = (e.clientX / window.innerWidth - 0.5) * 12;
-  const y = (e.clientY / window.innerHeight - 0.5) * 12;
-  document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
-});
+// Hover effect (desktop)
+const links = document.querySelectorAll('.hover-link');
 
-// Scroll parallax
-window.addEventListener("scroll", function(){
-  const offset = window.pageYOffset * 0.12;
-  document.body.style.backgroundPosition = `center calc(50% + ${offset}px)`;
-});
-
-// Hover background change for desktop
-const hoverLinks = document.querySelectorAll('.hover-link');
-hoverLinks.forEach(link => {
+links.forEach(link => {
   link.addEventListener('mouseover', () => {
-    document.body.style.backgroundImage = `url('${link.dataset.hover}')`;
+    document.body.style.backgroundImage = "url('main_alt.jpg')";
   });
+
   link.addEventListener('mouseout', () => {
     document.body.style.backgroundImage = "url('main.jpg')";
   });
 });
 
-// Mobile tap effect for phones/tablets
-hoverLinks.forEach(link => {
-  link.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // prevent immediate navigation
-    document.body.style.backgroundImage = `url('${link.dataset.hover}')`;
-    const href = link.getAttribute('href');
-    setTimeout(() => { window.location.href = href; }, 200); // short delay
+// Mobile / tablet touch effect
+links.forEach(link => {
+  link.addEventListener('touchstart', () => {
+    document.body.style.backgroundImage = "url('main_alt.jpg')";
   });
 });
 </script>
